@@ -1,0 +1,19 @@
+﻿Industry,Sort,UID,NAICS,Jobs 2019Q3,Employment Direct,Employment Indirect,Employment Induced,Employment Total Impact,Sales Direct,Sales Indirect,Sales Induced,Sales Total Impact,Compensation Direct,Compensation Indirect,Compensation Induced,Compensation Total Impact
+All Severely Threatened Industries,1,999999,,610552,1,0.36,0.22,1.58,1,0.39,0.34,1.73,1,0.58,0.46,2.03
+Air Transportation,2,481,481,29966,1,0.24,0.54,1.78,1,0.1,0.21,1.31,1,0.12,0.23,1.34
+Food and Beverage,3,445,445,58033,1,0.11,0.12,1.23,1,0.32,0.35,1.67,1,0.27,0.26,1.52
+Clothing and Clothing Accessories Stores,4,448,448,26980,1,0.18,0.18,1.37,1,0.37,0.31,1.68,1,0.55,0.44,1.99
+"Arts, Entertainment, and Recreation",5,71,71,48462,1,0.34,0.28,1.62,1,0.49,0.34,1.83,1,0.45,0.33,1.78
+"Sporting Goods, Hobby, Musical Instrument, and Book Stores",6,451,451,9268,1,0.23,0.21,1.44,1,0.4,0.32,1.72,1,0.61,0.45,2.06
+General Merchandise Stores,7,452,452,57632,1,0.12,0.14,1.26,1,0.36,0.38,1.74,1,0.35,0.28,1.63
+Transit and Ground Passenger Transportation,8,485,485,19084,1,0.12,0.17,1.29,1,0.27,0.31,1.58,1,0.15,0.15,1.3
+Scenic and Sightseeing Transportation,9,487,487,28,1,0.51,0.32,1.83,1,0.53,0.39,1.92,1,0.7,0.38,2.08
+Real Estate,10,531,531,44113,1,3.28,1.03,5.31,1,0.49,0.17,1.65,1,2.46,0.78,4.24
+Personal and Laundry Services,11,812,812,48833,1,0.18,0.24,1.41,1,0.29,0.32,1.61,1,0.34,0.39,1.73
+Traveler Accommodation,12,7211,7211,26435,1,0.24,0.2,1.44,1,0.4,0.32,1.72,1,0.46,0.31,1.76
+Special Food Services,13,7223,7223,16057,1,0.11,0.11,1.22,1,0.46,0.37,1.84,1,0.26,0.19,1.45
+Drinking Places (Alcoholic Beverages),14,7224,7224,4102,1,0.14,0.13,1.27,1,0.54,0.39,1.93,1,0.42,0.29,1.71
+Full-Service Restaurants,15,722511,722511,109326,1,0.1,0.12,1.22,1,0.43,0.39,1.82,1,0.33,0.26,1.59
+Limited Service Restaurants,16,722513,722513,95078,1,0.08,0.1,1.18,1,0.34,0.33,1.68,1,0.31,0.3,1.61
+"Cafeterias, Grill Buffets, and Buffets",17,722514,722514,2781,1,0.09,0.1,1.19,1,0.43,0.37,1.8,1,0.38,0.29,1.67
+Snack and Nonalcoholic Beverage Bars,18,722515,722515,14374,1,0.12,0.13,1.25,1,0.48,0.38,1.86,1,0.41,0.29,1.7
