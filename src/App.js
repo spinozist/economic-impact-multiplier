@@ -20,6 +20,19 @@ const App = () => {
 
     const rows = ['', 'Direct', 'Indirect', 'Induced', 'Total'];
     const columns = ['Compensation', 'Sales'];
+    
+    
+    const monthOptions = [];
+    for (let i = 1; i <= 12; i++) {
+        monthOptions.push({
+            text: i,
+            value: i,
+            key: i
+        })
+    };
+
+    console.log(monthOptions)
+    
 
     useEffect(() => setDropdownOptions(options), [])
 
@@ -27,6 +40,7 @@ const App = () => {
         <div id='main-wrapper'>
             <div>
                 <Dropdown
+                    // focus
                     selection
                     search
                     placeholder='Select an industry'
@@ -45,6 +59,19 @@ const App = () => {
                                     {row}
                                     {row !== '' ? ' Loss' : ''}
                                 </h3>
+                                {/* {row === 'Direct' ?
+                                    <h5>
+
+                                    for 
+                                    <Dropdown 
+                                        inline
+                                        value={12}
+                                        options={monthOptions}
+                                    />
+                                    months
+                                    </h5>
+                                    : null
+                                } */}
                             </div>    
                         )   
                     }
@@ -79,11 +106,13 @@ const App = () => {
                     </div>
                     <div>
                         <Input
+                            focus
                             text
                             placeholder='Input expect job loss'
                             value={input ? numeral(input).format('0,0') : null}
                             onChange={(e, data) => setInput(data.value)}
                         />
+
                     </div>
                     <div className='results-row'>
 
@@ -165,7 +194,9 @@ const App = () => {
             </div>
 
             <div>
-                Data Source: {dataSource}
+                <h5>
+                Data Source: <span id='data-source'>{dataSource}</span>
+                </h5>
             </div>
         </div>
     )

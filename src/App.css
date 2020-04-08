@@ -21,3 +21,7 @@
 .ui.input > input {
     text-align: center;
 }
+
+#data-source {
+    font-weight: 100;
+}
