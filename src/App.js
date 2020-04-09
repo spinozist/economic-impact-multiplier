@@ -9,7 +9,7 @@ const App = () => {
     const [dropdownOptions, setDropdownOptions] = useState();
     const [selectedOption, setSelectedOption] = useState();
 
-    const dataSource = 'JobsEQ Labor Insight'
+    const dataSource = 'JobsEQ Labor Insight, 2019Q3'
 
     const data = require('./data/ImpactedJobXers.json');
     const options = data.map(item => ({
@@ -38,7 +38,15 @@ const App = () => {
 
     return (
         <div id='main-wrapper'>
-            <div>
+            <div id='title-wrapper'>
+                <h1 id='title'>
+                   Economic Impact Multiplier 
+                </h1>
+                <h3 id='subtitle'>
+                    for the Atlanta Metro Region<sup>*</sup>
+                </h3>
+            </div>
+            <div id='industry-selector-wrapper'>
                 <Dropdown
                     // focus
                     selection
@@ -55,7 +63,7 @@ const App = () => {
                     {
                         rows.map(row =>
                             <div>
-                                <h3>
+                                <h3 className='row-header'>
                                     {row}
                                     {row !== '' ? ' Loss' : ''}
                                 </h3>
@@ -100,7 +108,7 @@ const App = () => {
                 </div>
                 <div className='grid-column'>
                     <div>
-                        <h2>
+                        <h2 className='column-header'>
                             Employment
                         </h2>
                     </div>
@@ -108,7 +116,7 @@ const App = () => {
                         <Input
                             focus
                             text
-                            placeholder='Input expect job loss'
+                            placeholder='Enter job loss'
                             value={input ? numeral(input).format('0,0') : null}
                             onChange={(e, data) => setInput(data.value)}
                         />
@@ -145,7 +153,7 @@ const App = () => {
                     columns.map(column =>
                         <div className='grid-column'>
                             <div>
-                                <h2>
+                                <h2 className='column-header'>
                                     {column}
                                 </h2>
                             </div>
@@ -197,6 +205,7 @@ const App = () => {
                 <h5>
                 Data Source: <span id='data-source'>{dataSource}</span>
                 </h5>
+                <strong>*</strong> Atlanta-Sandy Springs-Roswell MSA
             </div>
         </div>
     )
