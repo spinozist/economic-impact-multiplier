@@ -62,13 +62,17 @@ const BubbleChart = props => {
     
     
 
-        let getSelect = select(node).selectAll().remove()
+        // let getSelect = select(node)
+        //     .selectAll()
+        //     .remove()
         
-        getSelect = select(node)
+        let getSelect = select(node)
             .selectAll('circle')
             .remove();
             
-        getSelect = select(node).selectAll('text').remove()
+        getSelect = select(node)
+            .selectAll('text')
+            .remove()
                     
         getSelect = select(node)
             .selectAll('circle')
@@ -79,21 +83,15 @@ const BubbleChart = props => {
             .attr("class", "node")
             .attr("transform", d => 
                 `translate(${d.x},${d.y})`)
-            .on("mouseover", (d, i) => {
- 		
+            .on("mouseover", d => {
                 tooltip
                     .text(d.data.displayText)
                     .style("opacity", 1)	
                     .style("left", d3.event.pageX + 'px')		
                     .style("top", d3.event.pageY + 'px');
-                // tooltip.transition()
-                //     .duration(100)
             })					
             .on("mouseout", () => {		
                 tooltip.style("opacity", 0);
-                    // .transition()		
-                    // .duration(1000)		
-                    	
             }
         );;
 
@@ -108,7 +106,7 @@ const BubbleChart = props => {
             .attr("dy", ".3em")
             .attr("font-size","12px")
             .style("text-anchor", "middle")
-            .text(d => d.data.value > 2 ? numeral(d.data.value * numeral(props.input).value()/100).format('0,0') : null);
+            .text(d => d.data.value > 1 ? numeral(d.data.value * numeral(props.input).value()/100).format('0,0') : null);
     
         // getSelect.append("title")
         //     .text(d => d.data.displayText);

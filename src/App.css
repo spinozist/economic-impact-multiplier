@@ -1,6 +1,7 @@
 body {
     font-optical-sizing: auto;
 }
+
 div {
     font-size: 1.2rem;
 
@@ -9,14 +10,21 @@ div {
 
 
 #title {
-    line-height: 1rem;
+    line-height: 1.2rem;
     font-weight: 100;
-    padding: 20px 0 0 0;
+    font-size: 1.8rem;
+    padding: 10px 0 0 0;
+}
+
+#title strong {
+    font-weight: 600;
+    line-height: 2rem;
 }
 
 #subtitle {
     line-height: .5rem;
     font-weight: 100;
+    margin: 0;
 }
 
 #tab-row {
@@ -33,13 +41,11 @@ div {
     position: fixed;
     font-size: .9rem;
     top: 55vh;
-    right: 3%;
+    right: 5%;
     width: 40px;
     line-height: .8em;
     z-index: 999999;
 }
-
-
 
 #tab-row div{
     font-size: 1.1rem;
@@ -52,25 +58,14 @@ div {
     opacity: .5;
 }
 
-/* #selected-tab {
-    font-weight: 600;
-    background-color: aquamarine;
-    opacity: 1;
-} */
-
-
-
 #title-wrapper {
     position: fixed;
-    /* text-align: center; */
-    /* padding: 10px; */
     top: 0;
     left: 0;
     height: 15vh;
     padding: 10px 0 0 0;
     width: 100%;
     margin: auto;
-
 }
 
 #input-wrapper {
@@ -91,24 +86,22 @@ div {
 #bubble-chart {
     width: calc(100% - 20px);
     position: fixed;
-    bottom: 24vh;
+    bottom: 25vh;
     left: 18%;
-    /* left: 1%; */
     z-index: 0;
     opacity: .9;
 }
 
 
-.grid-cell.hidden {
+.hidden {
     visibility: hidden;
 }
-
 
 #main-wrapper {
     padding: 20px;
     display: grid;
     height: 100vh;
-    width: 100%;
+    max-width: 100%;
     text-align: center;
     grid-template-rows: 10% 10% 50% 20%;
     margin: auto;
@@ -119,18 +112,12 @@ div {
     top: 47vh;
     height: 43vh;
     width: calc(100% - 40px);
-    /* background-color: lightgrey; */
-
     display: grid;
     grid-template-columns: 40% 60%;
-
 }
 
 .grid-cell {
     font-size: 1.3rem;
-    /* height: 100%; */
-    /* padding: 10% 0 0 0; */
-    /* vertical-align: middle; */
 }
 
 .grid-column {
@@ -165,7 +152,7 @@ div {
 div.tooltip {	
     position: fixed;
     text-align: center;			
-    padding: 2px;
+    padding: 5px;
     width: 100px;				
     font: 12px sans-serif;		
     background: lightsteelblue;	
@@ -174,66 +161,4 @@ div.tooltip {
     pointer-events: none;
     z-index: 999999;			
   }
-
-/* @media only screen and (max-width: 600px) {
-    #main-wrapper {
-        width: 100%;
-        padding-top: 40px;
-        padding: 10px;
-        grid-template-rows: 15% 10% 45% 20% 5%;
-    }
-    div {
-        font-size: .9rem;
-
-    }
-    .grid-column {
-        grid-template-rows: 12% 22% 22% 22% 22%;
-    }
-    #main-grid {
-        padding: 5px;
-        width: calc(100% - 20px);
-        grid-template-columns: 10% 30% 35% 20%;
-    }
-    .column-header {
-        font-size: .9rem;
-    }
-    .row-header {
-        font-size: 1.1rem;
-        width: 100%;
-        text-align: right;
-    }
-    .ui.input.focus {
-        width: 50%;
-    } */
-
-    /* .ui.input.focus > input {
-        padding: 2px;
-    } */
-/* }  */
-
-/* @media only screen and (max-height: 600px) {
-    div {
-        font-size: 1rem;
-    }
-    #main-wrapper {
-        width: 100%;
-        padding-top: 30px;
-        grid-template-rows: 20% 70% 10%;
-    }
-    #title,
-    #subtitle {
-        position: fixed;
-        line-height: 1.5rem;
-    }
-    #title-wrapper {
-        padding: 0;
-    }
-    #industry-selector-wrapper {
-        position: fixed;
-        right: 5%;
-    }
-    h5 {
-        line-height: .4rem;
-    }
-} */
 

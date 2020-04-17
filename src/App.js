@@ -12,7 +12,7 @@ const App = () => {
     const [dropdownOptions, setDropdownOptions] = useState();
     const [selectedOption, setSelectedOption] = useState();
     const [selectedTab, setSelectedTab] = useState('Employment');
-    const [showBubbles, setShowBubbles] = useState(true);
+    const [showBubbles, setShowBubbles] = useState(false);
 
     const dataSource = 'JobsEQ Labor Insight, 2019Q3'
 
@@ -63,7 +63,7 @@ const App = () => {
         <div id='main-wrapper'>
             <div id='title-wrapper'>
                 <h1 id='title'>
-                   Job Loss Impact Calculator 
+                   <strong>COVID-19</strong><br />Economic Impact Calculator 
                 </h1>
                 <h3 id='subtitle'>
                     for the Atlanta Metro Region<sup>*</sup></h3>
@@ -153,41 +153,26 @@ const App = () => {
                     </div>
                     <div className='results-row'>
 
-                    <div 
-                        className={
-                            input && 
-                            selectedOption &
-                            showBubbles ?
-                            'grid-cell hidden' 
-                            : 'grid-cell'
-                        }
-                    >
-                        {input && selectedOption ?
+                    <div className='grid-cell'>
+                        {!showBubbles ? input && selectedOption ?
                             numeral(selectedIndustryInfo[`${selectedTab} Indirect`] * 
                             selectedIndustryInfo[`${selectedTab} Direct`] *
                             numeral(input)
                                 .value())
                                 .format(selectedTab === 'Employment' ? '0,0' : '$0,0')
-                            : <DataLoader />}
+                            : <DataLoader /> : null}
                         </div>
                     </div>
                     <div className='results-row'>
-                        <div 
-                            className={
-                                input && 
-                                selectedOption &
-                                showBubbles ?
-                                'grid-cell hidden' 
-                                : 'grid-cell'
-                            }
-                        >
-                            {input && selectedOption ?
+                        <div className='grid-cell'>
+
+                            {!showBubbles ? input && selectedOption ?
                                 numeral(selectedIndustryInfo[`${selectedTab} Induced`] * 
                                 selectedIndustryInfo[`${selectedTab} Direct`] *
                                 numeral(input)
                                     .value())
                                     .format(selectedTab === 'Employment' ? '0,0' : '$0,0')
-                                : <DataLoader />}
+                                : <DataLoader /> : null}
                         </div>
                     </div>
                     <div className='results-row'>
