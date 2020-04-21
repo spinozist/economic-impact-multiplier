@@ -70,15 +70,32 @@ div {
 
 #input-wrapper {
     position: fixed;
-    top: 16vh;
+    top: 23.5vh;
     width: calc(100% - 40px);
 }
+
+#job-loss-label {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.grid-cell p {
+    margin: 0;
+}
+
+.grid-cell small {
+    position: relative;
+    /* left: 40px; */
+    bottom: 5px;
+    font-size: .9rem;
+}
+
 
 #industry-selector-wrapper {
     margin: auto;
     width: calc(100% - 40px);
     position: fixed;
-    top: 26vh;
+    top: 16vh;
     height: 5vh;
     z-index: 999999;
 }

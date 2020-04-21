@@ -3,6 +3,8 @@ import { Dropdown, Input } from 'semantic-ui-react';
 import numeral from 'numeral';
 import BubbleChart from './components/BubbleChart';
 import Loader from 'react-loader-spinner';
+import { Slider } from 'react-semantic-ui-range';
+
 // import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 import './App.css'
 
@@ -55,9 +57,25 @@ const App = () => {
             selected: false
         })) : null
     
-    console.log(bubbleData);
+    // console.log(bubbleData);
+
+    const [percentLoss, setPercentLoss] = useState(.05);
+
+    const sliderSettings = {
+        start: percentLoss,
+        min: .01,
+        max: 1,
+        step: .01,
+        onChange: value =>  {
+            setPercentLoss(value);
+            setInput(selectedIndustryInfo ? 
+            selectedIndustryInfo['Jobs 2019Q3'] * value * -1 : null)
+        },
+    };
 
     useEffect(() => setDropdownOptions(options), [])
+    useEffect(() => setInput(selectedIndustryInfo ? 
+        selectedIndustryInfo['Jobs 2019Q3'] * percentLoss * -1 : null), [selectedOption])
 
     return (
         <div id='main-wrapper'>
@@ -67,15 +85,6 @@ const App = () => {
                 </h1>
                 <h3 id='subtitle'>
                     for the Atlanta Metro Region<sup>*</sup></h3>
-            </div>
-            <div id='input-wrapper'>
-            <Input
-                focus
-                text
-                placeholder='Enter expected job loss'
-                value={input ? numeral(input).format('0,0') : null}
-                onChange={(e, data) => setInput(data.value)}
-            />
             </div>
             <div id='industry-selector-wrapper'>
 
@@ -89,6 +98,37 @@ const App = () => {
                     onChange={(e, data) => setSelectedOption(data.value)}
                 />
             </div>
+            {
+                selectedIndustryInfo ?
+
+                <div id='input-wrapper'>
+
+                    {/* <p>
+                        Loss of {input ? numeral(input).format('0,0') : null} ({numeral(percentLoss).format('0%')}) of {selectedIndustryInfo['Jobs 2019Q3']} total jobs
+                    </p> */}
+                    <h2 id='job-loss-label'>
+                        {numeral(percentLoss).format('0%')}
+                    </h2>
+                    <small>Job Loss</small>
+                        
+                    <Slider 
+                        style={{ margin: '10px 0 0 0',float: 'center', width: '100%' }}
+                        // value={input}
+                        settings={sliderSettings}
+                        color='red'            
+                    />
+
+                {/* <Input
+                    focus
+                    text
+                    placeholder='Enter expected job loss'
+                    value={input ? numeral(input).format('0,0') : null}
+                    onChange={(e, data) => setInput(data.value)}
+                /> */}
+                </div> : null
+            }
+
+
 
             <div id='tab-row'>
                 {
@@ -121,10 +161,12 @@ const App = () => {
                     {
                         rows.map(row =>
                             <div className='grid-cell'>
+
                                 <h3>
                                     {row}
-                                    {row !== '' ? ' Loss' : ''}
+                                    {/* {row !== '' ? ' Impact' : ''} */}
                                 </h3>
+
                             </div>    
                         )   
                     }
@@ -134,18 +176,24 @@ const App = () => {
                     <div className='results-row'>
 
                         <div className='grid-cell'>
+                            <p>
                             {   input &&
                                 selectedOption ?
                                 selectedTab === 'Employment' ?
                                     numeral(input).format('0,0') :
                                         selectedTab === 'Compensation' ?
                                             numeral(selectedIndustryInfo['Compensation Direct'] * 
-                                            numeral(input).value()).format('$0,0') :
+                                            numeral(input/12).value()).format('$0,0') :
                                                 selectedTab === 'Sales' ?
                                                     numeral(selectedIndustryInfo['Sales Direct'] * 
-                                                    numeral(input).value()).format('$0,0')
+                                                    numeral(input/12).value()).format('$0,0')
                                 : <DataLoader/>
                                 : <DataLoader/>
+                            }
+                            </p>
+                            {  input && selectedOption && selectedTab !== 'Employment' ?
+                            <small>per Month</small>
+                            :null
                             }
                         </div>
 
@@ -154,36 +202,53 @@ const App = () => {
                     <div className='results-row'>
 
                     <div className='grid-cell'>
+                        <p>
                         {!showBubbles ? input && selectedOption ?
                             numeral(selectedIndustryInfo[`${selectedTab} Indirect`] * 
                             selectedIndustryInfo[`${selectedTab} Direct`] *
-                            numeral(input)
+                            numeral(selectedTab === 'Employment' ? input : input/12)
                                 .value())
                                 .format(selectedTab === 'Employment' ? '0,0' : '$0,0')
                             : <DataLoader /> : null}
+                        </p>
+                            {  input && selectedOption && selectedTab !== 'Employment' ?
+                            <small>per Month</small>
+                            :null
+                            }
                         </div>
                     </div>
                     <div className='results-row'>
                         <div className='grid-cell'>
-
+                            <p>
                             {!showBubbles ? input && selectedOption ?
                                 numeral(selectedIndustryInfo[`${selectedTab} Induced`] * 
                                 selectedIndustryInfo[`${selectedTab} Direct`] *
-                                numeral(input)
+                                numeral(selectedTab === 'Employment' ? input : input/12)
                                     .value())
                                     .format(selectedTab === 'Employment' ? '0,0' : '$0,0')
                                 : <DataLoader /> : null}
+                            </p>
+                            {  input && selectedOption && selectedTab !== 'Employment' ?
+                            <small>per Month</small>
+                            :null
+                            }
                         </div>
                     </div>
                     <div className='results-row'>
                         <div className='grid-cell'>
+                            <p>
                             {input && selectedOption ?
                                 numeral(selectedIndustryInfo[`${selectedTab} Total Impact`] * 
                                 selectedIndustryInfo[`${selectedTab} Direct`] *
-                                numeral(input)
+                                numeral(selectedTab === 'Employment' ? input : input/12)
                                     .value())
                                     .format(selectedTab === 'Employment' ? '0,0' : '$0,0')
                                 : <DataLoader />}
+                            </p>
+                            {  input && selectedOption && selectedTab !== 'Employment' ?
+                            <small>per Month</small>
+                            :null
+                            }
                         </div>
                     </div>
                 </div>
@@ -265,12 +330,13 @@ const App = () => {
             }
 
             <div id='footer'>
-                <h4>
-                Data Source: <span id='data-source'>{dataSource}</span>
-                </h4>
                 <p>
                     <strong>*</strong> Atlanta-Sandy Springs-Roswell MSA
                 </p>
+                <h4>
+                Data Source: <span id='data-source'>{dataSource}</span>
+                </h4>
+
             </div>
         </div>
     )
